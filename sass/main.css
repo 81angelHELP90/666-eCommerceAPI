@@ -1,9 +1,43 @@
+/*
+POSICION
+([1]$display, [2]$flex-direction, [3]$flex-wrap, [4]$justify-content, [5]$align-items, [6]$align-content)
+VALORES DEFAULT
+(flex, row, nowrap, flex-start, stretch, stretch)
+*/
 .test {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
 }
 .test button {
   margin: 10px 0 0 0;
+}
+
+.home {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+}
+.home .card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  border: 2px solid #D5DBDB;
+  border-radius: 20px;
+  width: 18rem;
+}
+.home .card img {
+  margin: 10px 0 0 0;
+  width: 90%;
+  height: 90%;
+  border-radius: 20px;
 }/*# sourceMappingURL=main.css.map */

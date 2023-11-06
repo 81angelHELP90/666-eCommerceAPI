@@ -1,11 +1,33 @@
-
+@import "_variables"; 
+@import "_mixins";
+/*
+POSICION
+([1]$display, [2]$flex-direction, [3]$flex-wrap, [4]$justify-content, [5]$align-items, [6]$align-content)
+VALORES DEFAULT
+(flex, row, nowrap, flex-start, stretch, stretch)
+*/
 .test{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    @include flex_model(flex, column, wrap, center, center,  stretch);
     
     button {
         margin: 10px 0 0 0;
+    }
+}
+
+.home {
+    @include flex_model(flex, row, wrap, center, center,  stretch);
+
+    .card {
+        @include flex_model(flex, row, wrap, center, center,  center);
+        border: 2px solid #D5DBDB;
+        border-radius: 20px;
+        width: 18rem;
+
+        img {
+            margin: 10px 0 0 0;
+            width: 90%;
+            height: 90%;
+            border-radius: 20px;
+        }
     }
 }
