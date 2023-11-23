@@ -10,7 +10,7 @@ function getMontoInicial(){
     else 
         plazo = prompt("Por favor, ingrese alguno de estos plazo: 3, 6, 12, 24, 36, 48 o 72 meses");
 
-    if(isNaN(plazo) || parseInt(plazo) < 1)
+    if(isNaN(plazo) || parseInt(plazo) < 1 || validatePlazo(plazo) < 0)
         alert(MsgP);
     else
         calcularCuota(montoInicial, plazo);
@@ -37,4 +37,10 @@ function calcularCuota(monto, plazo){
         montoCuotaFinal = (nMonto + nMonto * 1.35) / nPlazo;
         alert(msgCFT + "\nEl monto de la cuota es: $ " + montoCuotaFinal.toFixed(2));
     }
+}
+
+function validatePlazo(plazo){
+    const listPzoValidos = [3, 6, 12, 24, 36, 48, 72];
+
+    return listPzoValidos.findIndex(item => item === parseInt(plazo));
 }
