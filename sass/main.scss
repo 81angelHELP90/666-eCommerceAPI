@@ -118,6 +118,22 @@ div#box-btnFinal {
     color: $aZul;
 }
 
+#navbarCustom,
+.navbar>.container, 
+.navbar>.container-fluid, 
+.navbar>.container-lg, 
+.navbar>.container-md, 
+.navbar>.container-sm, 
+.navbar>.container-xl, 
+.navbar>.container-xxl {
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	align-items: center;
+	align-content: center;
+}
+
 
 
 
