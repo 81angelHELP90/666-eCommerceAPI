@@ -1,46 +1,85 @@
-function getMontoInicial(){
-    let plazo = ""; 
-    let Msg = "Debe ingresar un monto valido";
-    let MsgP = "Debe ingresar alguno de los plazos sugeridos";
+
+function getDataAPI(){
+    const urlProd = "https://fakestoreapi.com/products";
+    //const urlProd = "https://api.escuelajs.co/api/v1/products";
     
-    let montoInicial = prompt("Por favor, ingrese el monto deceado:");
-    
-    if(isNaN(montoInicial) || parseFloat(montoInicial) < 1)
-        alert(Msg);
-    else 
-        plazo = prompt("Por favor, ingrese alguno de estos plazo: 3, 6, 12, 24, 36, 48 o 72 meses");
-
-    if(isNaN(plazo) || parseInt(plazo) < 1 || validatePlazo(plazo) < 0)
-        alert(MsgP);
-    else
-        calcularCuota(montoInicial, plazo);
+    fetch(urlProd)
+        .then(response => {
+            if(response.ok) 
+                return response.json();
+            else 
+                throw new Error("Error fetch");
+        })
+        .then(data => {
+            bindingData(data);
+        })
+        .catch(error => {
+            console.log(error);
+        })
 }
 
-function calcularCuota(monto, plazo){
-    let msgCFT = "Costo Financiero Total (CFT) de 135 %";
-    let listPlazos = [3, 6, 12, 24, 36, 48, 72];
-    let nPlazo = parseInt(plazo);
-    let nMonto = parseInt(monto);
-    let montoCuotaFinal = 0;
-    let nPlazoValido = false;
+function bindingData(items) {
+    let mySection = document.getElementById("imgSection");
+    localStorage.setItem("itemCounter", 0);
+    localStorage.setItem("addMsg", true);
+    localStorage.setItem("itemsAndCant", "");
 
-    for(let i=0; i < listPlazos.length; i++){
-        if(nPlazo === listPlazos[i]) {
-            nPlazoValido = true;
-            i = listPlazos.length;
-        }
-    }
+    items.forEach(item => {
+        let divCard = document.createElement("div");
+        divCard.className = "card";
 
-    if(!nPlazoValido)
-        alert(Msg);
-    else {
-        montoCuotaFinal = (nMonto + nMonto * 1.35) / nPlazo;
-        alert(msgCFT + "\nEl monto de la cuota es: $ " + montoCuotaFinal.toFixed(2));
-    }
+        mySection.appendChild(divCard);
+
+        //img dentro del div Padre:
+        let imgCard = document.createElement("img");
+        imgCard.className = "imgCard";
+        imgCard.src = (item.image) ? item.image : item.images[0];
+
+        imgCard.addEventListener("click", function(){
+            navDetail(item.id, items);
+        });
+
+        //div dentro del div Padre:
+        let bodyCard = document.createElement("div");
+        bodyCard.className = "card-body";
+
+        //h5 dentro del div2:
+        let h5Body = document.createElement("h5");
+        h5Body.className = "card-title";
+        h5Body.innerHTML = item.title;
+
+        //p dentro del div2:
+        let pBody = document.createElement("p");
+        pBody.className = "card-text";
+        pBody.innerHTML = item.description;
+
+        //Footter 
+        let footerCard = document.createElement("div");
+        footerCard.className = "footter";
+
+        let btnAgregar = document.createElement("button");
+        btnAgregar.className = "btn btn-primary cartBtn";
+        btnAgregar.innerHTML = "Agregar";
+        btnAgregar.addEventListener("click", function(){
+            listItem(items, item.id, false);
+        });
+
+        //Buttom dentro del footter
+        let btnEliminar = document.createElement("button");
+        btnEliminar.className = "btn btn-secondary cartBtn";
+        btnEliminar.innerHTML = "Eliminar";
+        btnEliminar.addEventListener("click", function(){
+            listItem(items, item.id, true);
+        });
+
+        divCard.appendChild(bodyCard);
+        bodyCard.appendChild(h5Body);
+        divCard.appendChild(imgCard);
+        divCard.appendChild(pBody);
+        divCard.appendChild(footerCard);
+        footerCard.appendChild(btnAgregar);
+        footerCard.appendChild(btnEliminar);
+    });
 }
 
-function validatePlazo(plazo){
-    const listPzoValidos = [3, 6, 12, 24, 36, 48, 72];
-
-    return listPzoValidos.findIndex(item => item === parseInt(plazo));
-}
+getDataAPI();
