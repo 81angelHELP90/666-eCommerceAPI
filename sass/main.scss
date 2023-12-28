@@ -1,33 +1,121 @@
 @import "_variables"; 
 @import "_mixins";
-/*
-POSICION
-([1]$display, [2]$flex-direction, [3]$flex-wrap, [4]$justify-content, [5]$align-items, [6]$align-content)
-VALORES DEFAULT
-(flex, row, nowrap, flex-start, stretch, stretch)
-*/
-.test{
-    @include flex_model(flex, column, wrap, center, center,  stretch);
-    
-    button {
-        margin: 10px 0 0 0;
+
+.hideElement{
+    display: none !important;
+}
+
+.showElement{
+    display: block !important;
+}
+
+.stickyNav {
+    position: fixed;                                                                                                            
+    width: 100%;
+    z-index: 1;
+
+    .box-cart{
+        @include flex_model(flex, column, wrap, center, center,  center);
     }
 }
 
 .home {
-    @include flex_model(flex, row, wrap, center, center,  stretch);
+    @include flex_model(flex, row, wrap, space-between, center,  stretch);
+    margin-top: 70px;
 
     .card {
-        @include flex_model(flex, row, wrap, center, center,  center);
+        flex: 1 1 300px;
+        margin: 10px;
+        padding: 20px;
+        box-sizing: border-box;
         border: 2px solid #D5DBDB;
         border-radius: 20px;
-        width: 18rem;
-
+        
         img {
-            margin: 10px 0 0 0;
-            width: 90%;
-            height: 90%;
+            height: 250px;
+            width: 250px;
+            object-fit: cover;
             border-radius: 20px;
+        }
+        
+        h5, p {
+            box-sizing: border-box;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .footter{
+            @include flex_model(flex, row, wrap, space-between, center,  center);
         }
     }
 }
+
+.box-Zero-list {
+    @include flex_model(flex, row, wrap, center, center,  center);
+    width: 270px;
+    margin: 0 10px 0 10px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.box-item-list {
+    @include flex_model(flex, row, wrap, flex-start, center,  center);
+    width: 300px;
+    margin: 0 0 0 10px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    .imgItem {
+        width: 30px;
+        height: 30px;
+    }
+
+    div > p {
+        width: 270px;
+        margin: 0 0 0 10px;
+        box-sizing: border-box;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 0 0 5px 0;
+    }
+}
+
+.box-item-img{
+    @include flex_model(flex, row, wrap, space-between, center,  center);
+}
+
+
+div#box-btnFinal {
+    @include flex_model(flex, row, wrap, space-around, center,  center); 
+    margin: 10px 0 0 0; 
+}
+
+#btnFinal{
+    @include flex_model(flex, row, wrap, center, center,  center);
+    border: 1.3px solid #0D6EFD;
+    border-radius: 15px;
+    width: 75px;
+    height: 25px;
+    color: #0D6EFD;
+}
+
+.modal-dialog {
+    max-width: 700px;
+    margin: 1.75rem auto;
+}
+
+#warning{
+    color: $red;
+}
+
+#total-modal{
+    color: $aZul;
+}
+
+

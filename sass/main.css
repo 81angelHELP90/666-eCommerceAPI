@@ -1,43 +1,149 @@
-/*
-POSICION
-([1]$display, [2]$flex-direction, [3]$flex-wrap, [4]$justify-content, [5]$align-items, [6]$align-content)
-VALORES DEFAULT
-(flex, row, nowrap, flex-start, stretch, stretch)
-*/
-.test {
+.hideElement {
+  display: none !important;
+}
+
+.showElement {
+  display: block !important;
+}
+
+.stickyNav {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+.stickyNav .box-cart {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  align-content: stretch;
-}
-.test button {
-  margin: 10px 0 0 0;
+  align-content: center;
 }
 
 .home {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   align-content: stretch;
+  margin-top: 70px;
 }
 .home .card {
+  flex: 1 1 300px;
+  margin: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 2px solid #D5DBDB;
+  border-radius: 20px;
+}
+.home .card img {
+  height: 250px;
+  width: 250px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 20px;
+}
+.home .card h5, .home .card p {
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.home .card .footter {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+
+.box-Zero-list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   align-content: center;
-  border: 2px solid #D5DBDB;
-  border-radius: 20px;
-  width: 18rem;
+  width: 270px;
+  margin: 0 10px 0 10px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.home .card img {
+
+.box-item-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  width: 300px;
+  margin: 0 0 0 10px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.box-item-list .imgItem {
+  width: 30px;
+  height: 30px;
+}
+.box-item-list div > p {
+  width: 270px;
+  margin: 0 0 0 10px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 0 5px 0;
+}
+
+.box-item-img {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+
+div#box-btnFinal {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
   margin: 10px 0 0 0;
-  width: 90%;
-  height: 90%;
-  border-radius: 20px;
+}
+
+#btnFinal {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  border: 1.3px solid #0D6EFD;
+  border-radius: 15px;
+  width: 75px;
+  height: 25px;
+  color: #0D6EFD;
+}
+
+.modal-dialog {
+  max-width: 700px;
+  margin: 1.75rem auto;
+}
+
+#warning {
+  color: red;
+}
+
+#total-modal {
+  color: #0D6EFD;
 }/*# sourceMappingURL=main.css.map */
