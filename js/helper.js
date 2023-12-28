@@ -1,3 +1,4 @@
+
 function getDataAPI(){
     const urlProd = "https://fakestoreapi.com/products";
     //const urlProd = "https://api.escuelajs.co/api/v1/products";
